@@ -28,8 +28,6 @@ stockList = choiceStocks.Symbol
 
 
 #Declares variable to store stocks that fit the requirements
-global weeklyPlays
-weeklyPlays = []
 
 #Iterate through stocks to find inside bars
 def screener():
@@ -38,11 +36,12 @@ def screener():
        currentDate = data.index
        highPrice = data['High']
        lowPrice = data['Low']
+       weeklyPlays = []
        for j in range(len(data)-1):
            if highPrice[j] >= highPrice[j+1] and lowPrice[j] <= lowPrice[j+1]:
                weeklyPlays.append(i)
+    print("Here is the list of stocks in the {} sector that had inside bars over the last few days. Multiple entries indicate multiple inside bars.\n".format(sector) + str(weeklyPlays))
+
 
 if __name__ == "__main__":
     screener()
-
-print("Here is the list of stocks in the {} sector that had inside bars over the last few days. Multiple entries indicate multiple inside bars.\n".format(sector) + str(weeklyPlays))
