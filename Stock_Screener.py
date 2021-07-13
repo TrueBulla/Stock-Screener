@@ -23,7 +23,6 @@ def screener():
     startDate = datetime.today() - timedelta(days=1)
     endDate = datetime.today()
     weeklyPlays = []
-
     yf.pdr_override()
     nyseStocks = pd.read_csv('NYSE Stock List.csv')
     nasdaqStocks = pd.read_csv('Nasdaq Stock List.csv')
@@ -41,7 +40,6 @@ def screener():
                 for j in range(len(data)-1):
                     if highPrice[j] >= highPrice[j+1] and lowPrice[j] <= lowPrice[j+1]:
                        weeklyPlays.append(i)
-                       print(weeklyPlays)
 
             print("Here is the list of stocks in the {} sector that had inside bars over the last two days.\n".format(sector) + str(weeklyPlays))
             break
